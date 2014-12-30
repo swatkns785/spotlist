@@ -22,12 +22,8 @@ require 'rails_helper'
     user2 = FactoryGirl.create(:user)
     playlist2 = FactoryGirl.create(:playlist, user_id: user2.id)
 
-    visit new_user_session_path
-    fill_in "Email", with: user2.email
-    fill_in "Password", with: user2.password
-    click_button "Log in"
+    visit root_path
 
-    expect(page).to have_content "Signed in successfully."
     expect(page).to have_content playlist1.title
     expect(page).to have_content playlist2.title
     expect(page).to have_content playlist1.user.email
@@ -40,20 +36,16 @@ require 'rails_helper'
     user1 = FactoryGirl.create(:user)
     playlist1 = FactoryGirl.create(:playlist, user_id: user1.id)
     user2 = FactoryGirl.create(:user)
+    playlist2 = FactoryGirl.create(:playlist, user_id: user2.id)
 
-    visit new_user_session_path
-    fill_in "Email", with: user2.email
-    fill_in "Password", with: user2.password
+    visit root_path
 
-
-    click_button "Log in"
     click_link playlist1.title
 
     expect(page).to have_content playlist1.title
     expect(page).to have_content playlist1.description
     expect(page).to have_content playlist1.url
     expect(page).to have_content playlist1.user.email
-
-
+    expect(page).to_not have_content playlist2.title
   end
 end
