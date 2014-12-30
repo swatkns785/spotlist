@@ -17,6 +17,7 @@ Acceptance Criteria
 
     user = FactoryGirl.create(:user)
     playlist = FactoryGirl.create(:playlist, user_id: user.id)
+    review = FactoryGirl.create(:review, playlist_id: playlist.id, user_id: user.id)
 
     sign_in_as(user)
 
@@ -28,21 +29,22 @@ Acceptance Criteria
     fill_in "Description", with: playlist.description
     click_button "Submit Playlist"
 
-    fill_in "Rating", with: "5"
-    fill_in "Description", with: "This is a great playlist, would recommend"
+    fill_in "Rating", with: review.rating
+    fill_in "Description", with: review.description
     click_button "Submit Review"
 
-    expect(page).to have_content "Your review has been successfully added."
+    expect(page).to have_content "You have successfully created a review"
     expect(page).to have_content review.rating
     expect(page).to have_content review.description
     expect(page).to have_content review.user.email
   end
 
 
-  scenario "user is notified with errors when review creation is prevented" do
+  scenario "user is notified with errors when review creation is prevented", focus: true do
 
     user = FactoryGirl.create(:user)
     playlist = FactoryGirl.create(:playlist, user_id: user.id)
+    review = FactoryGirl.create(:review, playlist_id: playlist.id, user_id: user.id)
 
     sign_in_as(user)
 
@@ -57,9 +59,7 @@ Acceptance Criteria
     fill_in "Rating", with: "5"
     click_button "Submit Review"
 
-    expect(page).to have_content "Description can't be blank."
-    expect(page).to have_content review.rating
+    expect(page).to have_content "You have missing fields"
     expect(page).to_not have_content review.description
-    expect(page).to have_content review.user.email
   end
 end

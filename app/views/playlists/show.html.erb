@@ -8,3 +8,10 @@
 
 
 <%= render '/reviews/review_form' %>
+
+<% if @reviews != nil %>
+<% @reviews.each do |review| %>
+  <%= review.rating %>
+  <%= review.description %>
+<% end %>
+<% end %>

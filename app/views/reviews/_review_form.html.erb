@@ -1,9 +1,9 @@
 
-<%= form_for(@review) do |f| %>
+<%= form_for [@playlist, @review] do |f| %>
 
 <div class="field">
   <%= f.label :rating %><br>
-  <%= f.text :rating %>
+  <%= f.text_field :rating %>
 </div>
 
 <div class="field">
@@ -11,6 +11,6 @@
   <%= f.text_area :description %>
 </div>
 <div class="actions">
-  <%= f.submit "Submit Review" %>
+  <%= f.submit "Submit Review", method: :post %>
 </div>
 <% end %>
