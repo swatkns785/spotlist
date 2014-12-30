@@ -29,7 +29,7 @@ Acceptance Criteria
     fill_in "Description", with: playlist.description
     click_button "Submit Playlist"
 
-    fill_in "Rating", with: review.rating
+    select review.rating, from: "Rating"
     fill_in "Description", with: review.description
     click_button "Submit Review"
 
@@ -56,7 +56,7 @@ Acceptance Criteria
     fill_in "Description", with: playlist.description
     click_button "Submit Playlist"
 
-    fill_in "Rating", with: "5"
+    select review.rating, from: "Rating"
     click_button "Submit Review"
 
     expect(page).to have_content "You have missing fields"
