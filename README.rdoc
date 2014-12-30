@@ -1,1 +1,1 @@
-Need detailed readme. Will update.
+[![Build Status](https://travis-ci.org/swatkns785/spotlist.svg?branch=master)](https://travis-ci.org/swatkns785/spotlist) [![Code Climate](https://codeclimate.com/github/swatkns785/spotlist.png)](https://codeclimate.com/github/swatkns785/spotlist) [![Coverage Status](https://coveralls.io/repos/swatkns785/spotlist/badge.png)](https://coveralls.io/r/swatkns785/spotlist)

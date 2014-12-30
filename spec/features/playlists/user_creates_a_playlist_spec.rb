@@ -10,21 +10,11 @@ Acceptance Criteria
 [ ] I must be able to share a playlist from any page
 [ ] I must be presented with errors if the form is filled out incorrectly
 [ ] I must provide the title, URL, and description
-[ ] I can optionally provide a genre
 ) do
-
-  def sign_in
-    user = FactoryGirl.create(:user)
-    visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log in"
-    expect(page).to have_content "Signed in successfully."
-  end
 
   context "user successfully adds playlist" do
 
-    scenario "user successfully add playlist, meeting all acceptance criteria", focus: true do
+    scenario "user successfully add playlist, meeting all acceptance criteria" do
 
       user = FactoryGirl.create(:user)
       visit new_user_session_path
