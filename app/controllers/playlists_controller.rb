@@ -5,6 +5,7 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find(params[:id])
+    @review = Review.find(params[:id])
   end
 
   def create
