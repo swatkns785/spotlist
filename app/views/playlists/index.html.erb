@@ -1,0 +1,6 @@
+<h2> Show all playlists!</h2>
+
+<% @playlists.each do |playlist| %>
+  <div><%= link_to playlist.title, playlist_path(playlist) %></div>
+  <div><%= playlist.user.email %></div>
+<% end  %>

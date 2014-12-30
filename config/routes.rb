@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root 'homes#index'
+  root "playlists#index"
   devise_for :users
 
-  resources :playlists, only: [:new, :create, :show]
+  resources :playlists, only: [:new, :create, :index, :show]
 
 end
