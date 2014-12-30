@@ -5,3 +5,12 @@
 <p><%= @playlist.url %></p>
 
 <p><%= @playlist.user.email %></p>
+
+
+<%= render '/reviews/review_form' %>
+
+
+  <% @playlist.reviews.each do |review| %>
+    <div>Rating: <%= review.rating %></div>
+    <div><%= review.description %></div>
+  <% end %>

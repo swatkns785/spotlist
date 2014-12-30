@@ -13,4 +13,10 @@ FactoryGirl.define do
     description 'This awesome playlist features awesome music from awesome people whose awesomeness knows no bounds. Brah.'
   end
 
+  factory :review do
+    rating "5"
+    description "Hello there mate"
+    user
+    playlist
+  end
 end
