@@ -1,6 +1,6 @@
 class Review < ActiveRecord::Base
-    belongs_to :user
-    belongs_to :review
+  belongs_to :user
+  belongs_to :playlist
 
   validates :rating,
     presence: true

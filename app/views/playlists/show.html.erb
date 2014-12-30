@@ -9,9 +9,8 @@
 
 <%= render '/reviews/review_form' %>
 
-<% if @reviews != nil %>
-  <% @reviews.each do |review| %>
-    <%= review.rating %>
-    <%= review.description %>
+
+  <% @playlist.reviews.each do |review| %>
+    <div>Rating: <%= review.rating %></div>
+    <div><%= review.description %></div>
   <% end %>
-<% end %>

@@ -21,13 +21,7 @@ Acceptance Criteria
 
     sign_in_as(user)
 
-    click_link "Add a playlist"
-
-    expect(page).to have_content "Fill out the form below to add your playlist"
-    fill_in "Title", with: playlist.title
-    fill_in "URL", with: playlist.url
-    fill_in "Description", with: playlist.description
-    click_button "Submit Playlist"
+    visit playlist_path(playlist)
 
     select review.rating, from: "Rating"
     fill_in "Description", with: review.description
@@ -40,26 +34,20 @@ Acceptance Criteria
   end
 
 
-  scenario "user is notified with errors when review creation is prevented", focus: true do
+  scenario "user is notified with errors when review creation is prevented" do
 
     user = FactoryGirl.create(:user)
     playlist = FactoryGirl.create(:playlist, user_id: user.id)
     review = FactoryGirl.create(:review, playlist_id: playlist.id, user_id: user.id)
 
     sign_in_as(user)
+    visit playlist_path(playlist)
 
-    click_link "Add a playlist"
 
-    expect(page).to have_content "Fill out the form below to add your playlist"
-    fill_in "Title", with: playlist.title
-    fill_in "URL", with: playlist.url
-    fill_in "Description", with: playlist.description
-    click_button "Submit Playlist"
-
-    select review.rating, from: "Rating"
+    select "1", from: "Rating"
     click_button "Submit Review"
 
     expect(page).to have_content "You have missing fields"
-    expect(page).to_not have_content review.description
+    expect(page).to_not have_content "Rating: 1"
   end
 end

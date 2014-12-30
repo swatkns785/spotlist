@@ -6,7 +6,7 @@ class PlaylistsController < ApplicationController
   def show
     @playlist = Playlist.find(params[:id])
     @review = Review.new
-    @reviews = Review.where playlist_id: params[:id]
+    #@reviews = Review.where(playlist_id: params[:id])
   end
 
   def create
