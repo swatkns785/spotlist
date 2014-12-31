@@ -1,3 +1,5 @@
+<%= @review.errors.full_messages.first if @review.errors.any? %>
+
 <h2><%= @playlist.title %></h2>
 
 <p><%= @playlist.description %></p>
@@ -11,7 +13,11 @@
 
 
 <% @playlist.reviews.each do |review| %>
+  <div> Username: <%= review.user.email %> </div>
   <div>Rating: <%= review.rating %></div>
-  <div><%= review.description %></div>
-  <div> <%= link_to "Edit", edit_playlist_review_path(@playlist, review)  %> </div>
+  <div>Review: <%= review.description %></div>
+  <% if review.user_id == current_user.id %>
+    <div> <%= link_to "Edit", edit_playlist_review_path(@playlist, review)  %> </div>
+    <div> <%= link_to "Delete Review", playlist_review_path(@playlist, review), method: :delete %> </div>
+  <% end %>
 <% end %>

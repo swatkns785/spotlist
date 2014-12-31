@@ -5,10 +5,10 @@ As a user
 I want to edit my review of someone else's playlist
 So that I can correct my spelling errors
 Acceptance Criteria
-[ ] I must be able to edit my review from the playlist page
+[X] I must be able to edit my review from the playlist page
 [ ] I must be able to edit my review from the playlist owner's page
-[ ] I must be able to edit the numerical rating
-[ ] I must be presented with errors if I make a mistake while editing
+[X] I must be able to edit the numerical rating
+[X] I must be presented with errors if I make a mistake while editing
 [ ] I must not be able to edit anyone else's reviews
 ) do
 
