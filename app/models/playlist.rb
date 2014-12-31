@@ -6,8 +6,10 @@ class Playlist < ActiveRecord::Base
     presence: true
 
   validates :url,
-    presence: true
+    presence: true,
+    format: { with: URI.regexp}
 
   validates :description,
-    presence: true
+    presence: true,
+    length: { minimum: 1, maximum: 300 }
 end
