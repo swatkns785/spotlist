@@ -26,4 +26,17 @@ Acceptance Criteria
 
   end
 
+  scenario "a user tries to delete another user's playlist", focus: true do
+
+    playlist1 = FactoryGirl.create(:playlist)
+    playlist2 = FactoryGirl.create(:playlist)
+
+    sign_in_as(playlist1.user)
+
+    visit playlist_path(playlist2)
+
+    expect(page).to_not have_content "Delete Playlist"
+
+  end
+
 end
