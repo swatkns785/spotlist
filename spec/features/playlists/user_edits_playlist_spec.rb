@@ -6,10 +6,11 @@ I want to edit one of my playlists
 So that I can add, remove, or modify songs on my playlist
 
 Acceptance Criteria
-[ ] I must be able to edit the playlist from the unique playlist page
-[ ] I must be able to update the description of the playlist
-[ ] I must be able to update the title of the playlist
-[ ] I must be presented with errors if I make a mistake with the description.
+[x] I must be able to edit the playlist from the unique playlist page
+[x] I must be able to update the description of the playlist
+[x] I must be able to update the title of the playlist
+[x] I must be presented with errors if I make a mistake with the description or URL.
+[x] I must not be able to edit someone else's playlist.
 ) do
 
   scenario "user edits playlist, meeting all acceptance criteria" do
@@ -58,6 +59,19 @@ Acceptance Criteria
 
     expect(page).to have_content "Description is too long (maximum is 300 characters)"
     expect(page).to_not have_content "Your playlist has been successfully updated."
+
+  end
+
+  scenario "user unsuccessfully tries to edit another user's playlist" do
+
+    playlist1 = FactoryGirl.create(:playlist)
+    playlist2 = FactoryGirl.create(:playlist)
+
+    sign_in_as(playlist1.user)
+
+    visit playlist_path(playlist2)
+
+    expect(page).to_not have_content "Edit Playlist"
 
   end
 

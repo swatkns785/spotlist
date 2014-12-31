@@ -6,7 +6,9 @@
 
 <p><%= @playlist.user.email %></p>
 
-<p><%= link_to "Edit Playlist", edit_playlist_path(@playlist) %></p>
+<% if @playlist.user_id == current_user.id %>
+  <p><%= link_to "Edit Playlist", edit_playlist_path(@playlist) %></p>
+<% end %>
 
 
 <%= render '/reviews/review_form' %>
