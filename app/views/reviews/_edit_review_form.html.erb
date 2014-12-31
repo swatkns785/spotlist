@@ -1,4 +1,4 @@
-<%= form_for [@playlist, @review] do |f| %>
+<%= form_for [@review.playlist, @review] do |f| %>
   <div class="field">
     <%= f.label :rating %><br>
     <%= f.select :rating, options_for_select(0..5) %>

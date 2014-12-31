@@ -42,6 +42,7 @@ Acceptance Criteria
 
     select review.rating, from: "Rating"
     fill_in "Description", with: "and"
+    save_and_open_page
     click_button "Update Review"
 
     expect(page).to have_content "Description is too short (minimum is 25 characters)"

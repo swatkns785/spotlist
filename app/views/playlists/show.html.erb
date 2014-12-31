@@ -1,5 +1,8 @@
-<%= @review.errors.full_messages.first if @review.errors.any? %>
-
+<% if @review.errors.any? %>
+  <%  @review.errors.full_message.each do |msg| %>
+    <li>  <%= msg %>  </li>
+  <% end %>
+<% end %>
 <h2><%= @playlist.title %></h2>
 
 <p><%= @playlist.description %></p>
