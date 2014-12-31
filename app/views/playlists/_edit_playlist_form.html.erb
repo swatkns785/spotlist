@@ -1,0 +1,22 @@
+<%= form_for @playlist do |f| %>
+
+<div>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+
+<div>
+  <%= f.label :url, "URL" %>
+  <%= f.url_field :url %>
+</div>
+
+<div>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+</div>
+
+<p>
+  <%= f.submit "Update Playlist" %>
+</p>
+
+<% end %>
