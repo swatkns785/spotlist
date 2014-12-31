@@ -33,16 +33,13 @@ Acceptance Criteria
     expect(page).to have_content review.user.email
   end
 
-
   scenario "user is notified with errors when review creation is prevented" do
 
     user = FactoryGirl.create(:user)
     playlist = FactoryGirl.create(:playlist, user_id: user.id)
-    review = FactoryGirl.create(:review, playlist_id: playlist.id, user_id: user.id)
 
     sign_in_as(user)
     visit playlist_path(playlist)
-
 
     select "1", from: "Rating"
     click_button "Submit Review"

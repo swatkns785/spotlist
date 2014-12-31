@@ -10,7 +10,8 @@
 <%= render '/reviews/review_form' %>
 
 
-  <% @playlist.reviews.each do |review| %>
-    <div>Rating: <%= review.rating %></div>
-    <div><%= review.description %></div>
-  <% end %>
+<% @playlist.reviews.each do |review| %>
+  <div>Rating: <%= review.rating %></div>
+  <div><%= review.description %></div>
+  <div> <%= link_to "Edit", edit_playlist_review_path(@playlist, review)  %> </div>
+<% end %>

@@ -13,6 +13,23 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @playlist = Playlist.find(params[:playlist_id])
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @playlist = Playlist.find(params[:playlist_id])
+
+    if @review.update_attributes(review_params)
+      flash[:notice] = "You have successfully updated your review"
+      redirect_to playlist_path(params[:playlist_id])
+    else
+      render 'reviews/edit'
+    end
+  end
+
   private
 
   def review_params
