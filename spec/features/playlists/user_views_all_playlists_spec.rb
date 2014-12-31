@@ -38,6 +38,7 @@ require 'rails_helper'
     user2 = FactoryGirl.create(:user)
     playlist2 = FactoryGirl.create(:playlist, user_id: user2.id)
 
+    sign_in_as(user1)
     visit root_path
 
     click_link playlist1.title

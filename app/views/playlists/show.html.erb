@@ -11,6 +11,13 @@
 
 <p><%= @playlist.user.email %></p>
 
+<ul>
+  <% if @playlist.user == current_user %>
+    <p><%= link_to "Edit Playlist", edit_playlist_path(@playlist) %></p>
+    <p><%= link_to "Delete Playlist", playlist_path(@playlist), method: :delete %></p>
+  <% end %>
+</ul>
+
 
 <%= render '/reviews/review_form' %>
 
