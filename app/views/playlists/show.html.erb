@@ -7,9 +7,11 @@
 <p><%= @playlist.user.email %></p>
 
 <ul>
-<% if @playlist.user_id == current_user.id %>
-  <p><%= link_to "Edit Playlist", edit_playlist_path(@playlist) %></p>
-  <p><%= link_to "Delete Playlist", playlist_path(@playlist), method: :delete %></p>
+<% if current_user != nil %>
+  <% if @playlist.user_id == current_user.id %>
+    <p><%= link_to "Edit Playlist", edit_playlist_path(@playlist) %></p>
+    <p><%= link_to "Delete Playlist", playlist_path(@playlist), method: :delete %></p>
+  <% end %>
 <% end %>
 </ul>
 
