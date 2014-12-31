@@ -4,11 +4,16 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     @review.playlist = @playlist
-    if @review.save
-      flash[:notice] = "You have successfully created a review"
-      redirect_to playlist_path(@playlist)
+    if user_signed_in?
+      if @review.save
+        flash[:notice] = "You have successfully created a review"
+        redirect_to playlist_path(@playlist)
+      else
+        render "playlists/show"
+      end
     else
-      render "playlists/show"
+      flash[:alert] = "You must be signed in to leave a review."
+      redirect_to playlist_path(@playlist)
     end
   end
 
@@ -19,11 +24,15 @@ class ReviewsController < ApplicationController
 
   def update
     @review = current_user.reviews.find(params[:id])
-
-    if @review.update_attributes(review_params)
-      flash[:notice] = "You have successfully updated your review"
-      redirect_to playlist_path(params[:playlist_id])
+    if user_signed_in?
+      if @review.update_attributes(review_params)
+        flash[:notice] = "You have successfully updated your review"
+        redirect_to playlist_path(params[:playlist_id])
+      else
+        render :edit
+      end
     else
+      flash[:alert] = "You must be signed in to update a review."
       render :edit
     end
   end
