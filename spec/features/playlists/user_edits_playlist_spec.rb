@@ -12,7 +12,7 @@ Acceptance Criteria
 [ ] I must be presented with errors if I make a mistake with the description.
 ) do
 
-  scenario "user edits playlist, meeting all acceptance criteria", focus: true do
+  scenario "user edits playlist, meeting all acceptance criteria" do
 
     playlist = FactoryGirl.create(:playlist)
 
@@ -35,17 +35,16 @@ Acceptance Criteria
     expect(page).to have_content "#{playlist.description} 12345"
   end
 
-  scenario "user fills out form incorrectly" do
+  scenario "user fills out URL field incorrectly", focus: true do
 
     playlist = FactoryGirl.create(:playlist)
 
     visit edit_playlist_path(playlist)
-    fill_in "Title", with: ""
-    fill_in "URL", with: "wrongurl.http://"
-    fill_in "Description", with: ""
-    click_button "Submit Playlist"
+    fill_in "URL", with: "wrongurl"
+    click_button "Update Playlist"
 
-    expect(page).to have_content "Please fill out the forms correctly."
+    expect(page).to have_content "Url is invalid"
+    expect(page).to_not have_content "Your playlist has been successfully updated."
 
   end
 end
