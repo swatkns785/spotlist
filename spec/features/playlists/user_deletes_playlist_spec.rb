@@ -26,7 +26,7 @@ Acceptance Criteria
 
   end
 
-  scenario "a user tries to delete another user's playlist", focus: true do
+  scenario "a user tries to delete another user's playlist" do
 
     playlist1 = FactoryGirl.create(:playlist)
     playlist2 = FactoryGirl.create(:playlist)
