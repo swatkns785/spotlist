@@ -3,13 +3,13 @@ class Playlist < ActiveRecord::Base
   has_many :reviews
 
   validates :title,
-  presence: true
+    presence: true
 
   validates :url,
-  presence: true,
-  format: { with: URI.regexp}
+    presence: true,
+    format: { with: URI.regexp}
 
   validates :description,
-  presence: true,
-  length: { minimum: 1, maximum: 300 }
+    presence: true,
+    length: { minimum: 1, maximum: 300 }
 end

@@ -18,21 +18,21 @@ class PlaylistsController < ApplicationController
 
     if @playlist.save
       redirect_to playlist_path(@playlist)
-      flash[:alert] = "Your playlist has been successfully added."
+      flash[:notice] = "Your playlist has been successfully added."
     else
       render :new
     end
   end
 
   def edit
-    @playlist = Playlist.find(params[:id])
+    @playlist = current_user.playlists.find(params[:id])
   end
 
   def update
-    @playlist = Playlist.find(params[:id])
-    if @playlist.update_attributes(playlist_params)
+    @playlist = current_user.playlists.find(params[:id])
+    if @playlist.update(playlist_params)
       redirect_to playlist_path(@playlist)
-      flash[:alert] = "Your playlist has been successfully updated."
+      flash[:notice] = "Your playlist has been successfully updated."
     else
       render :edit
       flash[:alert] = "Please fill out the forms correctly."
@@ -40,9 +40,9 @@ class PlaylistsController < ApplicationController
   end
 
   def destroy
-    @playlist = Playlist.find(params[:id])
+    @playlist = current_user.playlists.find(params[:id])
     @playlist.destroy
-    flash[:alert] = "Your playlist has been successfully deleted."
+    flash[:notice] = "Your playlist has been successfully deleted."
     redirect_to root_path
   end
 

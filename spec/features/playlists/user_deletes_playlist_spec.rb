@@ -8,7 +8,7 @@ So that no one can see my playlist
 
 Acceptance Criteria
 [x] I must be able to delete my playlist from the individual playlist page
-[ ] I must not be able to delete someone else's playlist
+[x] I must not be able to delete someone else's playlist
 ) do
 
   scenario "a user deletes a playlist successfully" do

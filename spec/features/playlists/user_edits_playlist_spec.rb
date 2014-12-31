@@ -40,6 +40,7 @@ Acceptance Criteria
 
     playlist = FactoryGirl.create(:playlist)
 
+    sign_in_as(playlist.user)
     visit edit_playlist_path(playlist)
     fill_in "URL", with: "wrongurl"
     click_button "Update Playlist"
@@ -53,6 +54,7 @@ Acceptance Criteria
 
     playlist = FactoryGirl.create(:playlist)
 
+    sign_in_as(playlist.user)
     visit edit_playlist_path(playlist)
     fill_in "Description", with: "x"*301
     click_button "Update Playlist"
