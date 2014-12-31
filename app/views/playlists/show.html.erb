@@ -6,6 +6,8 @@
 
 <p><%= @playlist.user.email %></p>
 
+<p><%= link_to "Edit Playlist", edit_playlist_path(@playlist) %></p>
+
 
 <%= render '/reviews/review_form' %>
 

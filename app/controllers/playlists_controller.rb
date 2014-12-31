@@ -3,14 +3,13 @@ class PlaylistsController < ApplicationController
     @playlists = Playlist.all
   end
 
-  def new
-    @playlist = Playlist.new
-  end
-
   def show
     @playlist = Playlist.find(params[:id])
     @review = Review.new
-    #@reviews = Review.where(playlist_id: params[:id])
+  end
+
+  def new
+    @playlist = Playlist.new
   end
 
   def create
@@ -19,9 +18,24 @@ class PlaylistsController < ApplicationController
 
     if @playlist.save
       redirect_to playlist_path(@playlist)
-      flash[:notice] = "Your playlist has been successfully added."
+      flash[:alert] = "Your playlist has been successfully added."
     else
       render :new
+    end
+  end
+
+  def edit
+    @playlist = Playlist.find(params[:id])
+  end
+
+  def update
+    @playlist = Playlist.find(params[:id])
+    if @playlist.update_attributes(playlist_params)
+      redirect_to playlist_path(@playlist)
+      flash[:alert] = "Your playlist has been successfully updated."
+    else
+      render :edit
+      flash[:alert] = "Please fill out the forms correctly."
     end
   end
 
