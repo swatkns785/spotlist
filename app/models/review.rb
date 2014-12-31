@@ -6,5 +6,7 @@ class Review < ActiveRecord::Base
     presence: true
 
   validates :description,
-    presence: true
+    presence: true,
+    length:  { minimum: 25 }
+
 end
