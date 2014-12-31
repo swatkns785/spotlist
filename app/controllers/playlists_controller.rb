@@ -39,6 +39,13 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def destroy
+    @playlist = Playlist.find(params[:id])
+    @playlist.destroy
+    flash[:alert] = "Your playlist has been successfully deleted."
+    redirect_to root_path
+  end
+
   private
 
   def playlist_params
