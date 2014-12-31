@@ -35,7 +35,7 @@ Acceptance Criteria
     expect(page).to have_content "#{playlist.description} 12345"
   end
 
-  scenario "user fills out URL field incorrectly", focus: true do
+  scenario "user fills out URL field incorrectly" do
 
     playlist = FactoryGirl.create(:playlist)
 
@@ -47,4 +47,18 @@ Acceptance Criteria
     expect(page).to_not have_content "Your playlist has been successfully updated."
 
   end
+
+  scenario "user fills out description field incorrectly" do
+
+    playlist = FactoryGirl.create(:playlist)
+
+    visit edit_playlist_path(playlist)
+    fill_in "Description", with: "x"*301
+    click_button "Update Playlist"
+
+    expect(page).to have_content "Description is too long (maximum is 300 characters)"
+    expect(page).to_not have_content "Your playlist has been successfully updated."
+
+  end
+
 end
