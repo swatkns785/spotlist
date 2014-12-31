@@ -26,7 +26,7 @@
   <div> Username: <%= review.user.email %> </div>
   <div>Rating: <%= review.rating %></div>
   <div>Review: <%= review.description %></div>
-  <% if review.user_id == current_user.id %>
+  <% if review.user == current_user %>
     <div> <%= link_to "Edit", edit_playlist_review_path(@playlist, review)  %> </div>
     <div> <%= link_to "Delete Review", playlist_review_path(@playlist, review), method: :delete %> </div>
   <% end %>
