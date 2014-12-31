@@ -16,7 +16,7 @@ FactoryGirl.define do
 
   factory :review do
     rating "5"
-    description "Hello there mate"
+    description "Hello there mate yo yo yo yo yea yo yo. "
     user
     playlist
   end

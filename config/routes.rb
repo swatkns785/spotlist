@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :playlists do
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:create, :edit, :show, :update, :destroy]
   end
 end
