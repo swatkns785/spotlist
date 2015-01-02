@@ -13,10 +13,10 @@ Acceptance Criteria
 
   scenario "user can visit own page" do
     user = FactoryGirl.create(:user)
-    
+
     sign_in_as(user)
 
-    visit user_path
+    visit user_path(user.id)
 
     expect(page).to have_content user.email
   end
