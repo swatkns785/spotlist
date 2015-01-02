@@ -7,14 +7,14 @@ I want to be able to vote on a review
 So that I can assist others in seeing useful information
 
 Acceptance Criteria
-[ ] I must be able to vote once per review
+[x] I must be able to vote once per review
 [ ] I must be able to change my review
 [ ] I must not be able to vote on a review that I have written
 [ ] I must see the highest voted review at the top
 
 ) do
 
-  scenario "user votes on a review", focus: true do
+  scenario "user votes on a review" do
     review1 = FactoryGirl.create(:review)
     review2 = FactoryGirl.create(:review)
 
