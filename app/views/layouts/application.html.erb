@@ -3,10 +3,12 @@
 <head>
   <title>Spotlist2</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'trial', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<div class="contain-to-grid sticky">
   <nav class="top-bar">
     <ul class="title-area">
       <li class="name">
@@ -26,6 +28,9 @@
       </ul>
     </section>
   </nav>
+</div>
+  <div class="row">
+    <div class="small-11 small-centered columns"></div>
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
@@ -35,6 +40,7 @@
 
   <%= yield %>
 
+  </div>
   <%= javascript_include_tag 'application' %>
   <%= javascript_tag do %>
     $(function(){

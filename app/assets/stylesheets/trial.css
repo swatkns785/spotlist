@@ -1,0 +1,17 @@
+body {
+  background-image: url("background-dj2.jpg");
+  background-color: #000;
+  color: #fff;
+}
+
+h2 {
+  color: #fff;
+}
+
+nav.top-bar {
+  text-align:center;
+  down: 50px;
+}
+section.top-bar-section {
+  display: inline-block;
+}
