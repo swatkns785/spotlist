@@ -5,4 +5,11 @@ Rails.application.routes.draw do
   resources :playlists do
     resources :reviews, only: [:create, :edit, :show, :update, :destroy]
   end
+
+  resources :reviews, only: [:show] do
+    member do
+      post "upvote", to: "votes#upvote"
+      post "downvote", to: "votes#downvote"
+    end
+  end
 end

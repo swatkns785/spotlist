@@ -6,6 +6,7 @@ class PlaylistsController < ApplicationController
   def show
     @playlist = Playlist.find(params[:id])
     @review = Review.new
+    # @upvotes = Vote.find(review_id = params(id)
   end
 
   def new

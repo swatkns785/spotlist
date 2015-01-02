@@ -20,4 +20,11 @@ FactoryGirl.define do
     user
     playlist
   end
+
+  factory :vote do
+    entry "up"
+    user
+    playlist
+    review
+  end
 end
