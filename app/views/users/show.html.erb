@@ -11,7 +11,7 @@
 </div>
 
 <h2>Recent Reviews</h2>
-  <% @user.reviews.each do |review| %>
+  <% @user.reviews.order('created_at DESC').each do |review| %>
     Playlist Name: <%= link_to review.playlist.title, playlist_path(review.playlist)%><br>
     Rating: <%= review.rating %><br>
     Description: <%= review.description %><br><br>

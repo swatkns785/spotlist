@@ -7,8 +7,7 @@ So that I can admire myself
 Acceptance Criteria
 [ x ] I must be able to get to my user page from anywhere in the app
 [ x ] I must see my name, playlists (playlist names)
-[ ] I must see all of my playlists, along with most recent reviews
-[ ] I must see the functionality to delete account.
+[ x ] I must see all of my playlists, along with most recent reviews
 ) do
 
   scenario "user can visit own page and see their playlists" do
@@ -24,19 +23,11 @@ Acceptance Criteria
 
   scenario "user can visit own page and see their recent reviews" do
 
-  #user creates a review on another user's playlist
-  #user visits own profile page and sees their review
+  review = FactoryGirl.create(:review)
 
-  playlist2 = FactoryGirl.create(:playlist)
-  sign_in_as(playlist2.user)
+  sign_in_as(review.user)
 
-  visit playlists_path
-  expect(page).to have_content playlist2.user.email
-  click_on playlist2.title
-
-  select "2", from: "Rating"
-  fill_in "Description", with: "This is a really really really good playlist........."
-
-  click_on "Submit Review"
+  visit user_path(review.user)
+  expect(page).to have_content review.description
   end
 end
