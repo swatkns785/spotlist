@@ -1,0 +1,18 @@
+<div>
+  <h1><%= @user.email %></h2><br>
+    <% if @user.id == current_user.id %>
+      <%= button_to "Delete Account", user_path(current_user), method: :delete, data: {confirm: "Are you Sure?"} %>
+    <% end %>
+
+  <h2> Playlists </h2>
+    <% @user.playlists.each do |playlist| %>
+    <%= link_to playlist.title, playlist_path(playlist) %><br>
+  <% end %>
+</div>
+
+<h2>Recent Reviews</h2>
+  <% @user.reviews.each do |review| %>
+    Playlist Name: <%= link_to review.playlist.title, playlist_path(review.playlist)%><br>
+    Rating: <%= review.rating %><br>
+    Description: <%= review.description %><br><br>
+  <% end %>
