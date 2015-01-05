@@ -8,11 +8,8 @@
 </div>
 
 <h2>Recent Reviews</h2>
-  <% @user.reviews.order('created_at DESC').each do |review| %>
+  <% @user.recent_reviews.each do |review| %>
     Playlist Name: <%= link_to review.playlist.title, playlist_path(review.playlist)%><br>
     Rating: <%= review.rating %><br>
     Description: <%= review.description %><br><br>
   <% end %>
-    <% if @user.id == current_user.id %>
-      <p>Unhappy? <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %></p>
-    <% end %>

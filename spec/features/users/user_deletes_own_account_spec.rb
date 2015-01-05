@@ -6,7 +6,7 @@ I want to visit my profile page
 So that I can delete my account
 
 Acceptance Criteria
-[ x ] I must  be able to delete my account from my profile page.
+[ x ] I must  be able to delete my account from my Account Management Page.
 [ x ] I must see a message that I have successfully deleted my account
 [ x ] I cannot delete someone else's profile
 ) do
@@ -15,7 +15,7 @@ Acceptance Criteria
     user = FactoryGirl.create(:user)
 
     sign_in_as(user)
-    click_on "Profile"
+    click_on "Account Management"
     click_on "Cancel my account"
 
     expect(page).to have_content "Bye! Your account has been successfully
