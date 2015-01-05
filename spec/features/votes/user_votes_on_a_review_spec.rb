@@ -27,7 +27,7 @@ Acceptance Criteria
     expect(page).to have_content "Score: 1"
   end
 
-  scenario "user votes on a review" do
+  scenario "user up-votes on a review" do
     review1 = FactoryGirl.create(:review)
     review2 = FactoryGirl.create(:review)
 
@@ -38,6 +38,19 @@ Acceptance Criteria
     click_link "Upvote"
 
     expect(page).to have_content "Score: 1"
+  end
+
+  scenario "user down-votes on a review" do
+    review1 = FactoryGirl.create(:review)
+    review2 = FactoryGirl.create(:review)
+
+    sign_in_as(review1.user)
+
+    visit playlist_path(review2.playlist)
+
+    click_link "Downvote"
+
+    expect(page).to have_content "Score: -1"
   end
 
   scenario "user changes a vote" do
@@ -55,6 +68,11 @@ Acceptance Criteria
     click_link "Downvote"
 
     expect(page).to have_content "Score: -1"
+    expect(page).to have_content "Your vote has been updated."
+
+    click_link "Upvote"
+
+    expect(page).to have_content "Score: 1"
     expect(page).to have_content "Your vote has been updated."
   end
 
@@ -76,5 +94,14 @@ Acceptance Criteria
     end
     expect(page).to have_content "Score: -1"
     expect(page).to have_content "You have already down-voted for this review."
+  end
+
+  scenario "unauthenticated user tries to vote" do
+    review = FactoryGirl.create(:review)
+
+    visit playlist_path(review.playlist)
+    click_link "Upvote"
+
+    expect(page).to have_content "You need to sign in or sign up before continuing."
   end
 end

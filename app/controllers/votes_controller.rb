@@ -1,4 +1,6 @@
 class VotesController < ApplicationController
+  before_action :authenticate_user!
+  
   def upvote
     @vote = Vote.find_or_initialize_by(user_id: current_user.id, review_id: params[:id])
     if @vote.new_record? == true
