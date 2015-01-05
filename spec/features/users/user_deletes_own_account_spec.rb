@@ -16,9 +16,10 @@ Acceptance Criteria
 
     sign_in_as(user)
     click_on "Profile"
-    click_on "Delete Account"
+    click_on "Cancel my account"
 
-    expect(page).to have_content "You have canceled your account with Spotlist"
+    expect(page).to have_content "Bye! Your account has been successfully
+    cancelled. We hope to see you again soon."
   end
 
   scenario "user visits another user's account and cannot delete that account" do
@@ -28,6 +29,6 @@ Acceptance Criteria
     sign_in_as(user)
     visit user_path(user2.id)
 
-    expect(page).to_not have_button "Delete Account"
+    expect(page).to_not have_button "Cancel my account"
     end
 end

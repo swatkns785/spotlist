@@ -1,8 +1,5 @@
 <div>
   <h1><%= @user.email %></h2><br>
-    <% if @user.id == current_user.id %>
-      <%= button_to "Delete Account", user_path(current_user), method: :delete, data: {confirm: "Are you Sure?"} %>
-    <% end %>
 
   <h2> Playlists </h2>
     <% @user.playlists.each do |playlist| %>
@@ -16,3 +13,6 @@
     Rating: <%= review.rating %><br>
     Description: <%= review.description %><br><br>
   <% end %>
+    <% if @user.id == current_user.id %>
+      <p>Unhappy? <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <% end %>
