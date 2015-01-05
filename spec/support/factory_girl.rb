@@ -5,6 +5,7 @@ FactoryGirl.define do
     sequence(:email) {|n| "user#{n}@example.com" }
     password 'password'
     password_confirmation 'password'
+    admin false
   end
 
   factory :playlist do
@@ -28,4 +29,11 @@ FactoryGirl.define do
     user
     review
   end
+
+  # factory :admin do
+  #   factory :user do
+  #     sequence(:email) {|n| "user#{n}@example.com" }
+  #     password 'password'
+  #     password_confirmation 'password'
+  # end
 end

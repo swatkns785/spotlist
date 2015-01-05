@@ -26,10 +26,13 @@ class PlaylistsController < ApplicationController
 
   def edit
     @playlist = current_user.playlists.find(params[:id])
+    @admin_playlist = Playlist.find(params[:id])
+
   end
 
   def update
     @playlist = current_user.playlists.find(params[:id])
+    @admin_playlist = Playlist.find(params[:id])
     if @playlist.update(playlist_params)
       redirect_to playlist_path(@playlist)
       flash[:notice] = "Your playlist has been successfully updated."

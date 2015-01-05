@@ -6,8 +6,7 @@ class Playlist < ActiveRecord::Base
     presence: true
 
   validates :url,
-    presence: true,
-    format: { with: URI.regexp}
+    presence: true
 
   validates :description,
     presence: true,
