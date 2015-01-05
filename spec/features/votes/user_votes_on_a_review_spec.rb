@@ -57,4 +57,24 @@ Acceptance Criteria
     expect(page).to have_content "Score: -1"
     expect(page).to have_content "Your vote has been updated."
   end
+
+  scenario "user tries to input same vote twice" do
+    review1 = FactoryGirl.create(:review)
+    review2 = FactoryGirl.create(:review)
+
+    sign_in_as(review1.user)
+    visit playlist_path(review2.playlist)
+
+    2.times do
+      click_link "Upvote"
+    end
+    expect(page).to have_content "Score: 1"
+    expect(page).to have_content "You have already up-voted for this review."
+
+    2.times do
+      click_link "Downvote"
+    end
+    expect(page).to have_content "Score: -1"
+    expect(page).to have_content "You have already down-voted for this review."
+  end
 end
