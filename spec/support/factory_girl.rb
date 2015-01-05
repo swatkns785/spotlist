@@ -22,9 +22,8 @@ FactoryGirl.define do
   end
 
   factory :vote do
-    entry "up"
+    entry 1
     user
-    playlist
     review
   end
 end
