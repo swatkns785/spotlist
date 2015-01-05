@@ -1,5 +1,6 @@
 <div>
   <h1><%= @user.email %></h2><br>
+      <img src="<%= @user.profile_photo %>" width="200" />
 
   <h2> Playlists </h2>
     <% @user.playlists.each do |playlist| %>
