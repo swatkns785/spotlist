@@ -37,7 +37,7 @@ Acceptance Criteria
 
     sign_in_as(user)
     click_on "Profile"
-    save_and_open_page
+
     expect(page).to have_xpath("//img[@src=\"/uploads/user/profile_photo/#{user.id}/William_Mahoney.jpg\"]")
   end
 end
