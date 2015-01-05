@@ -9,8 +9,8 @@ Acceptance Criteria
 [X] I must be able to leave a rating (numerical)
 [X] I must be able to leave a description with my review (minimum 25 characters)
 [X] I must be able to leave the review from the playlist show page
-[ ] Once submitted, I must see my review description, my review rating, and my email.
-[ ] I must be presented with errors if I fill out the description field incorrectly or neglect to choose rating.
+[X] Once submitted, I must see my review description, my review rating, and my email.
+[X] I must be presented with errors if I fill out the description field incorrectly or neglect to choose rating.
 ) do
 
   scenario "user successfully reviews a playlist" do
