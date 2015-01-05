@@ -22,4 +22,10 @@ FactoryGirl.define do
     user
     playlist
   end
+
+  factory :vote do
+    entry 1
+    user
+    review
+  end
 end
