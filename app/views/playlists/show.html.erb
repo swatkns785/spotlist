@@ -3,12 +3,10 @@
     <li>  <%= msg %>  </li>
   <% end %>
 <% end %>
+
 <h2><%= @playlist.title %></h2>
-
 <p><%= @playlist.description %></p>
-
 <p><%= @playlist.url %></p>
-
 <p><%= @playlist.user.email %></p>
 
 <ul>
@@ -19,11 +17,9 @@
   <% elsif current_user.admin? %>
     <p><%= link_to "Delete Playlist", admin_playlist_path(@playlist), method: :delete %></p>
   <% end %>
-
 </ul>
 
 <%= render '/reviews/review_form' %>
-
 
 <% @playlist.reviews.each do |review| %>
   <div>Username: <%= review.user.email %> </div>
@@ -36,5 +32,8 @@
   <% if review.user == current_user %>
     <div> <%= link_to "Edit", edit_playlist_review_path(@playlist, review)  %> </div>
     <div> <%= link_to "Delete Review", playlist_review_path(@playlist, review), method: :delete %> </div>
+  <% elsif current_user == nil %>
+  <% elsif current_user.admin? %>
+    <p><%= link_to "Delete Review", admin_review_path(review), method: :delete %></p>
   <% end %>
 <% end %>

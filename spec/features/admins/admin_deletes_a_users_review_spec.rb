@@ -5,7 +5,7 @@ As an admin
 I must be able to delete a review
 So that I can monitor explicit language and emoticons
 Acceptance Criteria
-[ ] I must be able to delete a review from a playlist
+[x] I must be able to delete a review from a playlist
 [ ] User that submitted the review will receive an email warning
 
 ) do
@@ -15,7 +15,8 @@ Acceptance Criteria
     non_admin_user = FactoryGirl.create(:review)
 
     sign_in_as(admin_user)
-    visit playlist_path(non_admin_user)
+    visit playlist_path(non_admin_user.playlist)
+
     expect(page).to have_content non_admin_user.description
     click_link "Delete Review"
 
