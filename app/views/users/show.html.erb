@@ -1,6 +1,10 @@
 <div>
   <h1><%= @user.email %></h2><br>
-      <img src="<%= @user.profile_photo %>" width="200" />
+    <% if @user.profile_photo.present? %>
+    <img src="<%= @user.profile_photo %>" width="200" />
+    <% else %>
+    <img src="http://sellleadsucceed.files.wordpress.com/2014/02/bigstock-silhouette-with-a-question-mar-59367497.jpg" width="200" />
+    <% end %>
 
   <h2> Playlists </h2>
     <% @user.playlists.each do |playlist| %>

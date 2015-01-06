@@ -32,4 +32,24 @@ Acceptance Criteria
 
   end
 
+  scenario "user successfully removes photo", focus: true do
+
+    user = FactoryGirl.create(:user)
+
+    sign_in_as(user)
+
+    visit edit_user_registration_path
+
+    attach_file('Change your Photo', 'app/assets/images/omar_coming.jpg')
+    fill_in "Current password", with: user.password
+
+    click_button "Update"
+
+    visit user_path(user)
+
+    expect(page).to have_xpath("//img[@src=\"/uploads/user/profile_photo/#{user.id}/omar_coming.jpg\"]")
+
+  end
+
+
 end

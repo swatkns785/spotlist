@@ -31,6 +31,10 @@
     <%= f.label :profile_photo, "Change your Photo" %>
     <%= f.file_field :profile_photo %>
   </div>
+  <div>
+    <%= f.label :remove_profile_photo, "Remove your Photo" %>
+    <%= f.check_box :remove_profile_photo %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Update" %>
