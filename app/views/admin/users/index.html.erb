@@ -1,0 +1,7 @@
+<h1> Admin: Users </h1>
+
+<ol>
+  <h1><% @users.each do |user| %></h1>
+    <li><%= link_to user.email, user_path(user) %></li>
+  <%end %>
+</ol>

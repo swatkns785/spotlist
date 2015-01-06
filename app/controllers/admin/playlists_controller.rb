@@ -1,8 +1,4 @@
 class Admin::PlaylistsController < ApplicationController
-  def edit
-    @playlist = Playlist.find(params[:id])
-  end
-
   def destroy
     @playlist = Playlist.find(params[:id])
     @playlist.destroy

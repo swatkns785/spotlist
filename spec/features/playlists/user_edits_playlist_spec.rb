@@ -44,6 +44,7 @@ Acceptance Criteria
     visit edit_playlist_path(playlist)
     fill_in "URL", with: "wrongurl"
     click_button "Update Playlist"
+    save_and_open_page
 
     expect(page).to have_content "Url is invalid"
     expect(page).to_not have_content "Your playlist has been successfully updated."

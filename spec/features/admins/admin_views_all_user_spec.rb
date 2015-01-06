@@ -6,7 +6,7 @@ I want to be able to see a full list of users
 So that I can update users if needed
 
 Acceptance Criteria
-[ ] I must be able to view a full list of users
+[x] I must be able to view a full list of users
 [ ] I must be able to search for a specific user
 [ ] I must be able to sort all users by name or date created
 
@@ -21,8 +21,7 @@ Acceptance Criteria
     sign_in_as(admin_user)
 
     visit admin_users_path
-
-    expect(page).to have_content non_admin_user1.name
-    expect(page).to have_content non_admin_user2.name
+    expect(page).to have_content non_admin_user1.user.email
+    expect(page).to have_content non_admin_user2.user.email
   end
 end
