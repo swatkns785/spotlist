@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'carrierwave'
+gem 'fog'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -31,15 +32,16 @@ gem 'carrierwave'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  gem 'capybara'
   gem 'rspec-rails'
-  # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'launchy'
+  gem 'factory_girl'
+  gem 'valid_attribute'
+  gem 'shoulda-matchers', require: false
   gem 'spring'
+  gem 'dotenv-rails'
 end
 
 gem 'rails_12factor', group: :production
@@ -48,10 +50,5 @@ group :test do
   gem 'coveralls', require: false
 end
 
-gem 'capybara', group: [:development, :test]
-gem 'launchy', group: [:development, :test]
-gem 'factory_girl', group: [:development, :test]
-gem 'valid_attribute', group: [:development, :test]
-gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'devise'
 gem 'foundation-rails'
