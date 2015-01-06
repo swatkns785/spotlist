@@ -1,22 +1,28 @@
 require 'rails_helper'
 
-feature "Admin views all users", %q{
+feature "Admin views all users", %q(
 As an admin
 I want to be able to see a full list of users
 So that I can update users if needed
 
 Acceptance Criteria
-[  ] I must be able to view a full list of users
-[  ] I must be able to search for a specific user
-[  ] I must be able to sort all users by name or date created
+[ ] I must be able to view a full list of users
+[ ] I must be able to search for a specific user
+[ ] I must be able to sort all users by name or date created
 
 
-} do
+) do
 
-  scenario "Admin views all users", focus: true do
-    Factorygirl.create(:user, admin: true)
+  scenario "Admin views all users" do
+    admin_user = FactoryGirl.create(:user, admin: true)
+    non_admin_user1 = FactoryGirl.create(:playlist)
+    non_admin_user2 = FactoryGirl.create(:playlist)
 
-    vitis admin_path
+    sign_in_as(admin_user)
+
+    visit admin_users_path
+
+    expect(page).to have_content non_admin_user1.name
+    expect(page).to have_content non_admin_user2.name
   end
-
 end
