@@ -6,8 +6,8 @@ I want to be able to delete a user
 So that I can clean up our database
 
 Acceptance Criteria
-[ ] I must be able to delete a specific user from our service
-[ ] All playlist associated with that user must be deleted as well
+[x] I must be able to delete a specific user from our service
+[x] All playlist associated with that user must be deleted as well
 [ ] All reviews associated with the user must be deleted
 ) do
 
@@ -17,9 +17,9 @@ Acceptance Criteria
 
     sign_in_as(admin_user)
     visit admin_users_path
-    expect(page).to have_content non_admin_user.email
+    expect(page).to have_content non_admin_user.user.email
 
-    click_link "Delete User"
-    expect(page).to_not have_content non_admin_user.email
+    click_link("Delete User", match: :first)
+    expect(page).to_not have_content non_admin_user.user.email
   end
 end

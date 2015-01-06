@@ -2,6 +2,8 @@
 
 <ol>
   <h1><% @users.each do |user| %></h1>
-    <li><%= link_to user.email, user_path(user) %></li>
-  <%end %>
+    <li><%= link_to user.email, user_path(user) %>
+      <%= link_to "Delete User", admin_user_path(user), method: :delete %>
+    </li>
+  <% end %>
 </ol>
