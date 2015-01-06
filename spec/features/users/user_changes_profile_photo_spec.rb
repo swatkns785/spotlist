@@ -7,9 +7,9 @@ I want to change my profile photo
 So that it can reflect my recent weight loss
 
 Acceptance Criteria
-[ ] I must be able to change my photo from my Account Management Page
-[ ] I must only be allowed to upload GIF, JPG, or PNG formats
-[ ] If I try to upload file that is not image, I receive the appropriate error messages
+[x] I must be able to change my photo from my Account Management Page
+[x] I must be able to delete my photo from my Account Management Page
+[x] I must limit the type of files I can upload
 
 ) do
 
@@ -32,7 +32,7 @@ Acceptance Criteria
 
   end
 
-  scenario "user successfully removes photo", focus: true do
+  scenario "user successfully removes photo" do
 
     user = FactoryGirl.create(:user)
 
@@ -40,14 +40,32 @@ Acceptance Criteria
 
     visit edit_user_registration_path
 
-    attach_file('Change your Photo', 'app/assets/images/omar_coming.jpg')
+    check("Remove your Photo")
+
     fill_in "Current password", with: user.password
 
     click_button "Update"
 
     visit user_path(user)
 
-    expect(page).to have_xpath("//img[@src=\"/uploads/user/profile_photo/#{user.id}/omar_coming.jpg\"]")
+    expect(page).to have_xpath("//img[@src=\"http://sellleadsucceed.files.wordpress.com/2014/02/bigstock-silhouette-with-a-question-mar-59367497.jpg\"]")
+
+  end
+
+  scenario "user tries to upload unacceptable file type" do
+
+    user = FactoryGirl.create(:user)
+
+    sign_in_as(user)
+
+    visit edit_user_registration_path
+
+    attach_file('Change your Photo', 'app/assets/images/hashes.txt')
+    fill_in "Current password", with: user.password
+
+    click_button "Update"
+
+    expect(page).to have_content "You are not allowed to upload \"txt\" files, allowed types: jpg, jpeg, gif, png"
 
   end
 

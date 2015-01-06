@@ -52,3 +52,5 @@ end
 
 gem 'devise'
 gem 'foundation-rails'
+
+ruby "2.0.0"

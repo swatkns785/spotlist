@@ -1,0 +1,84 @@
+HASHES!!! November 12th
+
+cards = integers or strings
+  as an array [2, "heart"]
+
+hand = array of cards (array of strings)
+  ["2 hearts", "3 diamonds", "ace spades", "4 diamonds", "ace diamonds"]
+
+  find Aces:
+  hand.count {|card| card.start_with("A")} (NOT THE MOST EFFICIENT METHOD)
+
+Arrays (lists)
+  -ordered list of elements
+  -indexed by position
+
+Hashes (dictionaries)
+  -associates pairs of values (keys and values)
+  -indexed by key
+  -keys are unique
+
+syntax: { "A" => 2, "2" => 1 }
+
+[{ first_name : "Steven", last_name : "Watkins"},
+{ first_name : "Mikey", last_name : "Mitchell"}]
+
+
+November 13, 2014
+
+Arrays
+list of elements (0 or more)
+
+Hashes
+collection of attributes
+
+person = { “first_name” => “Adam”, “last_name” => “Sheehan” }
+
+_______________________
+
+movie = {
+:title => "The Room",
+:length => "130",
+:cast => [{ actor: "Tommy Wiseau", character: "Johnny"}, { :actor => "Greg Sesteso", character: "Mark"}]
+}
+
+movie -> outputs entire hash
+movie[:cast] -> outputs array of :cast
+movie[:cast][1] -> outputs second (actor+character) in :cast as hash
+movie[:cast][1][:character] -> outputs "Mark" as string
+
+
+______
+require "net/http"
+require "JSON"
+
+result = NET::HTTP.get(URI)
+movie = JSON.parse(result)
+
+movie["abridged_cast"].each do |cast_member|
+  puts "This #{cast_member["name"]} appears as #{character["characters"]}."
+  puts
+end
+
+puts result
+
+
+*programmableweb.com last list of APIs*
+
+
+
+
+_________________________________________________________________
+phone_nos = {}
+
+CSV.foreach(phone_numbers.csv; headers: true) do |row|
+
+#for each row, create a new k-v
+#pair "Dan" => {home:__, mobile:__, work:__}
+name = row["name"]
+phone_nos[name] = {
+  home: row["home"]
+  mobile: row["mobile"]
+  work: row["work"]
+}
+end
