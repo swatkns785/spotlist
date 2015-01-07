@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :playlists
+  has_many :playlists, dependent: :destroy
   has_many :reviews
   has_many :votes, through: :reviews
 

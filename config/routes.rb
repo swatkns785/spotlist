@@ -13,4 +13,10 @@ Rails.application.routes.draw do
       post "downvote", to: "votes#downvote"
     end
   end
+
+  namespace :admin do
+    resources :users, only: [:index, :destroy]
+    resources :playlists, only: [:update, :destroy]
+    resources :reviews, only: [:destroy]
+  end
 end

@@ -35,7 +35,7 @@ Acceptance Criteria
   end
 
   scenario "user fills out URL field incorrectly" do
-
+  
     playlist = FactoryGirl.create(:playlist)
 
     sign_in_as(playlist.user)

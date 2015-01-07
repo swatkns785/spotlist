@@ -5,6 +5,7 @@ FactoryGirl.define do
     sequence(:email) {|n| "user#{n}@example.com" }
     password 'password'
     password_confirmation 'password'
+    admin false
     profile_photo { fixture_file_upload(Rails.root.join('app', 'assets', 'images', 'William_Mahoney.jpg'), 'image/jpg') }
   end
 
