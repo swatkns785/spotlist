@@ -35,7 +35,6 @@ Acceptance Criteria
 
       expect(page).to have_content "Your playlist has been successfully added."
       expect(page).to have_content playlist.title
-      expect(page).to have_content playlist.url
       expect(page).to have_content playlist.description
       expect(page).to have_content playlist.user.email
 
