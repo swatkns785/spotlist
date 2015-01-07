@@ -11,7 +11,7 @@ Acceptance Criteria
 [ ] All reviews associated with the user must be deleted
 ) do
 
-  scenario "Admin deletes a user", focus: true do
+  scenario "Admin deletes a user" do
     admin_user = FactoryGirl.create(:user, admin: true)
     non_admin_user = FactoryGirl.create(:review)
 
