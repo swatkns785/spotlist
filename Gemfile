@@ -57,5 +57,6 @@ end
 gem 'devise'
 gem 'foundation-rails'
 gem 'faker'
+gem 'kaminari'
 
 # ruby "2.1.0"

@@ -1,2 +1,2 @@
-<%= @review.errors.full_messages.first if @review.errors.any? %>
+<%= @review.errors.full_messages if @review.errors.any? %>
 <%= render "edit_review_form" %>
