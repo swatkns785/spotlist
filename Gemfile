@@ -43,6 +43,9 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'spring'
   gem 'dotenv-rails'
+  gem 'email_spec'
+  gem 'spec'
+  gem 'mailcatcher'
 end
 
 gem 'rails_12factor', group: :production

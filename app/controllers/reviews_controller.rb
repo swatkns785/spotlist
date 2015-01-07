@@ -1,6 +1,8 @@
 class ReviewsController < ApplicationController
   def create
     @playlist = Playlist.find(params[:playlist_id])
+    @user = @playlist.user.email
+
     @review = Review.new(review_params)
     @review.user = current_user
     @review.playlist = @playlist
@@ -8,6 +10,7 @@ class ReviewsController < ApplicationController
       if @review.save
         flash[:notice] = "You have successfully created a review"
         redirect_to playlist_path(@playlist)
+        UserMailer.review_notification(@user).deliver_now
       else
         render "playlists/show"
       end

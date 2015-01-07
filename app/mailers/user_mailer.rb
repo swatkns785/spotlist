@@ -1,7 +1,8 @@
 class UserMailer < ApplicationMailer
-  def welcome_email(user)
-    @user = user
-    @url = 'http://example.com/login'
-    mail(to: @user.email, subject: 'Welcome to Spotlist')
+  default from: "spotlist.launch@gmail.com"
+  def review_notification(playlist_creator)
+    @user = playlist_creator
+    @url = 'http://spotlist-launch.herokuapp.com/playlists/#{@playlist.id}'
+    mail(to: @user, subject: 'Someone has just reviewed your playlist')
   end
 end
