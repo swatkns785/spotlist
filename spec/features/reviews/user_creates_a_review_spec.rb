@@ -13,7 +13,7 @@ Acceptance Criteria
 [X] I must be presented with errors if I fill out the description field incorrectly or neglect to choose rating.
 ) do
 
-  scenario "user successfully reviews a playlist", focus: true do
+  scenario "user successfully reviews a playlist" do
     ActionMailer::Base.deliveries = []
 
     user = FactoryGirl.create(:user)

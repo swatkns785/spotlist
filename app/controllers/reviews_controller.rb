@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
       if @review.save
         flash[:notice] = "You have successfully created a review"
         redirect_to playlist_path(@playlist)
-        UserMailer.review_notification(@user).deliver_now
+        UserMailer.review_notification(@playlist).deliver_now
       else
         render "playlists/show"
       end
