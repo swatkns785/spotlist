@@ -27,12 +27,10 @@ Acceptance Criteria
     click_link "Edit Playlist"
 
     fill_in "Title", with: "#{playlist.title} 12345"
-    fill_in "URL", with: "#{playlist.url}12345"
     fill_in "Description", with: "#{playlist.description} 12345"
     click_button "Update Playlist"
 
     expect(page).to have_content "#{playlist.title} 12345"
-    expect(page).to have_content "#{playlist.url}12345"
     expect(page).to have_content "#{playlist.description} 12345"
   end
 

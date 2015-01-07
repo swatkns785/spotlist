@@ -45,7 +45,6 @@ require 'rails_helper'
 
     expect(page).to have_content playlist1.title
     expect(page).to have_content playlist1.description
-    expect(page).to have_content playlist1.url
     expect(page).to have_content playlist1.user.email
     expect(page).to_not have_content playlist2.title
   end

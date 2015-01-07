@@ -30,4 +30,14 @@ Acceptance Criteria
   visit user_path(review.user)
   expect(page).to have_content review.description
   end
+
+  scenario "user can visit own page and see their profile picture" do
+
+    user = FactoryGirl.create(:user)
+
+    sign_in_as(user)
+    click_on "Profile"
+
+    expect(page).to have_xpath("//img[@src=\"/uploads/user/profile_photo/#{user.id}/William_Mahoney.jpg\"]")
+  end
 end
