@@ -26,8 +26,6 @@ class PlaylistsController < ApplicationController
 
   def edit
     @playlist = current_user.playlists.find(params[:id])
-    @admin_playlist = Playlist.find(params[:id])
-
   end
 
   def update
