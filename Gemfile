@@ -58,5 +58,6 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'faker'
 gem 'kaminari'
+gem 'sendgrid-ruby'
 
 # ruby "2.1.0"
