@@ -1,10 +1,11 @@
 class PlaylistsController < ApplicationController
   def index
-    @playlists = Playlist.all
+    @playlists = Playlist.order('created_at DESC').page(params[:page])
   end
 
   def show
     @playlist = Playlist.find(params[:id])
+    @reviews = @playlist.reviews.order('created_at DESC').page(params[:page])
     @review = Review.new
   end
 
@@ -50,6 +51,6 @@ class PlaylistsController < ApplicationController
   private
 
   def playlist_params
-    params.require(:playlist).permit(:title, :url, :description)
+    params.require(:playlist).permit(:title, :url, :description, :rating)
   end
 end

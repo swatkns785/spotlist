@@ -11,6 +11,7 @@ Acceptance Criteria
 [X] I must be able to leave the review from the playlist show page
 [X] Once submitted, I must see my review description, my review rating, and my email.
 [X] I must be presented with errors if I fill out the description field incorrectly or neglect to choose rating.
+[ ] I must be able to got to the next page for reviews
 ) do
 
   scenario "user successfully reviews a playlist" do
@@ -54,5 +55,25 @@ Acceptance Criteria
 
     expect(page).to have_content "Description is too short (minimum is 25 characters)"
     expect(page).to_not have_content "Rating: 1"
+  end
+
+  scenario "user goes to the next page for the reviews" do
+
+    user = FactoryGirl.create(:user)
+    playlist = FactoryGirl.create(:playlist, user_id: user.id)
+
+    25.times do
+      FactoryGirl.create(:review, playlist_id: playlist.id, user_id: user.id)
+    end
+
+    sign_in_as(user)
+
+    visit playlist_path(playlist)
+
+    expect(page).to_not have_link "1"
+    expect(page).to have_link "2"
+    expect(page).to have_link "3"
+    expect(page).to have_link "Next"
+    expect(page).to have_link "Last"
   end
 end

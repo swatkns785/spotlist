@@ -10,11 +10,12 @@ class ReviewsController < ApplicationController
         redirect_to playlist_path(@playlist)
         UserMailer.review_notification(@playlist).deliver_now
       else
-        render "playlists/show"
+        @reviews = @playlist.reviews.order('created_at DESC').page(params[:page])
+        render 'playlists/show'
       end
     else
       flash[:alert] = "You must be signed in to leave a review."
-      redirect_to playlist_path(@playlist)
+      redirect_to new_user_session_path
     end
   end
 
