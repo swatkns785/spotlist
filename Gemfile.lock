@@ -91,6 +91,8 @@ GEM
     execjs (2.2.2)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.26.0)
@@ -312,6 +314,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_girl
+  faker
   fog
   foundation-rails
   jbuilder (~> 2.0)
