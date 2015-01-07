@@ -1,3 +1,5 @@
+<%= @review.errors.full_messages if @review.errors.any? %>
+
 <%= form_for [@playlist, @review] do |f| %>
   <div class="field">
     <%= f.label :rating %><br>
