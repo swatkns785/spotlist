@@ -11,7 +11,7 @@ Acceptance Criteria
 [ ] All reviews associated with the user must be deleted
 ) do
 
-  scenario "Admin deletes a user" do
+  scenario "Admin deletes a user", focus: true do
     admin_user = FactoryGirl.create(:user, admin: true)
     non_admin_user = FactoryGirl.create(:review)
 
@@ -20,6 +20,7 @@ Acceptance Criteria
     expect(page).to have_content non_admin_user.user.email
 
     click_link("Delete User", match: :first)
+    expect(page).to have_content "User successfully deleted"
     expect(page).to_not have_content non_admin_user.user.email
   end
 end
