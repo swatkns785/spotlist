@@ -14,6 +14,7 @@ Acceptance Criteria
 ) do
 
   scenario "user successfully reviews a playlist" do
+    ActionMailer::Base.deliveries = []
 
     user = FactoryGirl.create(:user)
     playlist = FactoryGirl.create(:playlist, user_id: user.id)
@@ -31,6 +32,12 @@ Acceptance Criteria
     expect(page).to have_content review.rating
     expect(page).to have_content review.description
     expect(page).to have_content review.user.email
+
+    expect(ActionMailer::Base.deliveries.size).to eql(1)
+    last_email = ActionMailer::Base.deliveries.last
+    expect(last_email).to have_subject('Someone has just reviewed your playlist')
+    expect(last_email).to deliver_to(user.email)
+    expect(last_email).to have_body_text(/A review has been posted on one of your playlists/)
   end
 
   scenario "user is notified with errors when review creation is prevented" do
