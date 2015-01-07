@@ -22,7 +22,7 @@ Rails.application.configure do
     port:                 587,
     domain:               'http://spotlist-launch.herokuapp.com/',
     user_name:            'spotlist.launch@gmail.com',
-    password:             ENV[SPOTLIST_GMAIL_PW],
+    password:             ENV['SPOTLIST_GMAIL_PW'],
     authentication:       'plain',
     enable_starttls_auto: true  }
 

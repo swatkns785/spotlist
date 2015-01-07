@@ -1,8 +1,6 @@
 class ReviewsController < ApplicationController
   def create
     @playlist = Playlist.find(params[:playlist_id])
-    @user = @playlist.user.email
-
     @review = Review.new(review_params)
     @review.user = current_user
     @review.playlist = @playlist
