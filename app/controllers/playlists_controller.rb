@@ -5,6 +5,7 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find(params[:id])
+    @reviews = @playlist.reviews.order('created_at DESC').page params[:page]
     @review = Review.new
   end
 

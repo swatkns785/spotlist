@@ -23,7 +23,11 @@
 
 <%= render '/reviews/review_form' %>
 
-<% @playlist.reviews.each do |review| %>
+
+<% @reviews.each do |review| %>
+  <div>
+    --
+  </div>
   <div>Username: <%= review.user.email %> </div>
   <div>Rating: <%= review.rating %></div>
   <div>Review: <%= review.description %></div>
@@ -38,4 +42,5 @@
   <% elsif current_user.admin? %>
     <p><%= link_to "Delete Review", admin_review_path(review), method: :delete %></p>
   <% end %>
-<% end %>
+<% end %><br>
+<%= paginate @reviews %>

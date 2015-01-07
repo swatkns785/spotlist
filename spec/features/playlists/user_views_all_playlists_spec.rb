@@ -12,7 +12,7 @@ require 'rails_helper'
   [ ] I must see rating for each playlist (if available)
   [ ] I must see playlists sorted by rating (highest to lowest as default)
   [ ] I must be able to sort playlists by different parameters
-  [ ] I must be able to click next page
+  [X] I must be able to click next page
 ) do
 
   scenario "views all playlists" do
@@ -49,7 +49,7 @@ require 'rails_helper'
     expect(page).to_not have_content playlist2.title
   end
 
-  scenario "user views playlist on next page", focus: true do
+  scenario "user views playlist on next page" do
 
     playlist1 = FactoryGirl.create(:playlist)
     playlist2 = FactoryGirl.create(:playlist)

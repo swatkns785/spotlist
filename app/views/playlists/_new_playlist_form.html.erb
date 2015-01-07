@@ -1,3 +1,9 @@
+<% if @playlist.errors.any? %>
+  <%  @playlist.errors.full_messages.each do |msg| %>
+    <li>  <%= msg %>  </li>
+  <% end %>
+<% end %>
+
 <%= form_for @playlist do |f| %>
 
   <div>
