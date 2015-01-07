@@ -1,6 +1,6 @@
 class PlaylistsController < ApplicationController
   def index
-    @playlists = Playlist.all
+    @playlists = Playlist.order('created_at DESC').page params[:page]
   end
 
   def show

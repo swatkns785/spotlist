@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-   def recent_reviews
-     reviews.order(created_at: :desc)
-   end
+  def recent_reviews
+    reviews.order(created_at: :desc)
+  end
 end
