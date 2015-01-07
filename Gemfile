@@ -54,4 +54,4 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'faker'
 
-#ruby "2.1.0"
+ruby "2.1.0"
