@@ -2,5 +2,8 @@
 
 <% @playlists.each do |playlist| %>
   <div><%= link_to playlist.title, playlist_path(playlist) %></div>
+  <span class="playlist-container" style="display:inline">
+    <iframe src="https://embed.spotify.com/?uri=<%= playlist.url %>" width="700" height="500" frameborder="0" allowtransparency="true"></iframe>
+  </span>
   <div><%= playlist.user.email %></div>
 <% end  %>
