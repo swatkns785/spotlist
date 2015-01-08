@@ -7,8 +7,7 @@ So that I can monitor explicit material
 
 Acceptance Criteria
 [x] I must be able to delete a specific playlist
-[ ] Any reviews associated with the playlist must be deleted
-[ ] The owner of the playlist will be notified by email when a playlist is deleted
+[x] Any reviews associated with the playlist must be deleted
 
 ) do
 

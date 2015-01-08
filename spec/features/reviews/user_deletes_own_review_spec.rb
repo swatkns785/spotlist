@@ -4,11 +4,12 @@ feature "user deletes own review", %q(
 As a user
 I want to delete my own review on someone else's playlist
 So that they wont be offended by my negative commentary
+
 Acceptance Criteria
-[ ] I must be able to delete my review from the playlist owners user page
+[x] I must be able to delete my review from the playlist owners user page
 [x] I must be able to delete my review from the playlist's show page
 [x] I must not be able to delete any one else's reviews
-[ ] If I delete my review, all associated comments are deleted as well
+
 ) do
 
   scenario "user successfully deletes own review from playlist" do

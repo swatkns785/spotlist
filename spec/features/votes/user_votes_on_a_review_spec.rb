@@ -10,7 +10,7 @@ Acceptance Criteria
 [x] I must be able to vote once per review
 [x] I must be able to change my vote
 [x] I must not be able to vote on a review that I have written
-[ ] I must see the highest voted review at the top
+[x] The votes must be sorted by the highest vote first
 
 ) do
 
