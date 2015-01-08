@@ -11,7 +11,7 @@ FactoryGirl.define do
 
   factory :playlist do
     sequence(:title) {|n| "#{n} Dead Man's Blues"}
-    sequence(:url) {|n| "http://www.validurl#{n}.com/"}
+    sequence(:url) {|n| "spotify:user:mayorjama:playlist:6nqCHVPFXhtdWDXxJu0k3s"}
     description 'This awesome playlist features awesome music from awesome people whose awesomeness knows no bounds. Brah.'
 
     user

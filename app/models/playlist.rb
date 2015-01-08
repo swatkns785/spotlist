@@ -13,4 +13,10 @@ class Playlist < ActiveRecord::Base
   validates :description,
     presence: true,
     length: { minimum: 1, maximum: 300 }
+
+  def self.search(query)
+    where("plainto_tsquery(?) @@ " +
+    "to_tsvector('english', title || ' ' || description)",
+    query)
+  end
 end
