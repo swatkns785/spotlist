@@ -19,4 +19,8 @@ Rails.application.routes.draw do
     resources :playlists, only: [:update, :destroy]
     resources :reviews, only: [:destroy]
   end
+
+  #resources :helps, only: [:index]
+  get '/help' => "helps#index"
+
 end
