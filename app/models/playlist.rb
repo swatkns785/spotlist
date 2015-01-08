@@ -15,8 +15,6 @@ class Playlist < ActiveRecord::Base
     length: { minimum: 1, maximum: 300 }
 
   def self.search(query)
-    where("plainto_tsquery(?) @@ " +
-    "to_tsvector('english', title || ' ' || description)",
-    query)
+    where("title ILIKE ? OR description ILIKE ?", "%" + query + "%", "%" + query + "%")
   end
 end
