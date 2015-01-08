@@ -8,8 +8,7 @@ So that I can update users if needed
 Acceptance Criteria
 [x] I must be able to view a full list of users
 [x] A non-admin user must not be able to view this page
-[ ] I must be able to search for a specific user
-[ ] I must be able to sort all users by name or date created
+[x] Users are sorted all users by date created
 
 
 ) do

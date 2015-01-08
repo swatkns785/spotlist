@@ -11,20 +11,20 @@ Acceptance Criteria
 [X] I must be able to leave the review from the playlist show page
 [X] Once submitted, I must see my review description, my review rating, and my email.
 [X] I must be presented with errors if I fill out the description field incorrectly or neglect to choose rating.
-[ ] I must be able to got to the next page for reviews
+[x] I must be able to got to the next page for reviews
 ) do
 
   scenario "user successfully reviews a playlist" do
     ActionMailer::Base.deliveries = []
 
     user = FactoryGirl.create(:user)
+    user2 = FactoryGirl.create(:user)
     playlist = FactoryGirl.create(:playlist, user_id: user.id)
     review = FactoryGirl.create(:review, playlist_id: playlist.id, user_id: user.id)
 
-    sign_in_as(user)
+    sign_in_as(user2)
 
     visit playlist_path(playlist)
-
     select review.rating, from: "Rating"
     fill_in "Description", with: review.description
     click_button "Submit Review"
@@ -44,7 +44,7 @@ Acceptance Criteria
   scenario "user is notified with errors when review creation is prevented" do
 
     user = FactoryGirl.create(:user)
-    playlist = FactoryGirl.create(:playlist, user_id: user.id)
+    playlist = FactoryGirl.create(:playlist)
 
     sign_in_as(user)
     visit playlist_path(playlist)
@@ -63,14 +63,12 @@ Acceptance Criteria
     playlist = FactoryGirl.create(:playlist, user_id: user.id)
 
     25.times do
-      FactoryGirl.create(:review, playlist_id: playlist.id, user_id: user.id)
+      FactoryGirl.create(:review, playlist_id: playlist.id)
     end
 
     sign_in_as(user)
-
     visit playlist_path(playlist)
 
-    expect(page).to_not have_link "1"
     expect(page).to have_link "2"
     expect(page).to have_link "3"
     expect(page).to have_link "Next"

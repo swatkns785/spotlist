@@ -5,8 +5,8 @@ As an admin
 I must be able to delete a review
 So that I can monitor explicit language and emoticons
 Acceptance Criteria
+
 [x] I must be able to delete a review from a playlist
-[ ] User that submitted the review will receive an email warning
 
 ) do
 

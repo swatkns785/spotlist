@@ -1,9 +1,9 @@
 <h1> Admin: Users </h1>
 
-<ol>
+<ul>
   <h1><% @users.each do |user| %></h1>
-    <li><%= link_to user.email, user_path(user) %>
-      <%= link_to "Delete User", admin_user_path(user), method: :delete %>
+    <li><%= user.id %>. <%= link_to user.email, user_path(user) %>
+      <%= link_to "Delete User", admin_user_path(user), method: :delete, data: { confirm: "Are you sure?"} %>
     </li>
   <% end %>
-</ol>
+</ul>

@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_filter :check_if_admin
 
   def index
-    @users = User.all
+    @users = User.order('id DESC')
   end
 
   def destroy

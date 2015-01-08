@@ -8,7 +8,7 @@ class Playlist < ActiveRecord::Base
 
   validates :url,
     presence: true,
-    format: { with: URI.regexp}
+    format: { with: URI::regexp("spotify:user"), message: "Please use the valid Spotify URI address." }
 
   validates :description,
     presence: true,

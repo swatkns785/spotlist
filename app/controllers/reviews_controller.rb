@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
         redirect_to playlist_path(@playlist)
         UserMailer.review_notification(@playlist).deliver_now
       else
-        @reviews = @playlist.reviews.order('created_at DESC').page(params[:page])
+        @reviews = @playlist.reviews.order('score DESC').page(params[:page])
         render 'playlists/show'
       end
     else

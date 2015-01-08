@@ -9,7 +9,7 @@
 
 <iframe src="https://embed.spotify.com/?uri=<%= @playlist.url %>" width="1000" height="500" frameborder="0" allowtransparency="true"></iframe>
 
-<p><%= @playlist.user.email %></p>
+<p><%= link_to @playlist.user.email, user_path(@playlist.user) %></p>
 
 <ul>
   <% if @playlist.user == current_user %>
