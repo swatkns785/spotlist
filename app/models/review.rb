@@ -5,6 +5,13 @@ class Review < ActiveRecord::Base
   belongs_to :playlist
   has_many :votes
 
+  validates :user,
+    presence: true,
+    uniqueness: {scope: :playlist}
+
+  validates :playlist,
+    presence: true
+
   validates :rating,
     presence: true
 
