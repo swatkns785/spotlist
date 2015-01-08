@@ -16,6 +16,13 @@
 
     <section class="top-bar-section">
       <ul class="right">
+
+        <%= form_tag playlists_path, method: :get do %>
+        <%= label_tag :query, "Search" %>
+        <%= text_field_tag :query %>
+        <%= submit_tag "Search" %>
+        <% end %>
+
         <% if signed_in? %>
           <% if current_user.admin? %>
             <li><%= link_to 'Admin', admin_users_path %></li>

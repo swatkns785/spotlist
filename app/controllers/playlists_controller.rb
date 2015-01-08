@@ -1,6 +1,11 @@
 class PlaylistsController < ApplicationController
   def index
-    @playlists = Playlist.order('created_at DESC').page(params[:page])
+    if params[:query]
+      @playlists = Playlist.search(params[:query])
+    else
+      @playlists = Playlist.all
+    end
+    @playlists = @playlists.order('created_at DESC').page(params[:page])
   end
 
   def show
