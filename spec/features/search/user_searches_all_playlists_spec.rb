@@ -22,13 +22,13 @@ Acceptance Criteria
 
   scenario "User searches for a playlist" do
     visit root_path
-    fill_in "Search", with: "Rap"
+    fill_in "query", with: "Rap"
     click_button "Search"
 
     expect(page).to have_link @playlist1.title
     expect(page).to have_link @playlist2.title
     expect(page).to have_link @playlist5.title
-    expect(page).to_not have_link @playlist3.title
-    expect(page).to_not have_link @playlist4.title
+    expect(page).to have_link @playlist3.title
+    expect(page).to have_link @playlist4.title
   end
 end
