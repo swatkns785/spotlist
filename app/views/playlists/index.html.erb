@@ -1,11 +1,60 @@
-<h2> Show all playlists!</h2>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row" id="index-welcome">
+      <h1>Welcome to Spotlist</h1>
+    </div>
 
-<% @playlists.each do |playlist| %>
-  <div><%= link_to playlist.title, playlist_path(playlist) %></div>
-  <span class="playlist-container" style="display:inline">
-    <iframe src="https://embed.spotify.com/?uri=<%= playlist.url %>" width="700" height="500" frameborder="0" allowtransparency="true"></iframe>
-  </span>
-  <div><%= link_to playlist.user.email, user_path(playlist.user) %></div>
-<% end  %>
+    <div class="row">
+      <% @playlists.each do |playlist| %>
+      <div class="large-3 small-6 columns">
+        <iframe src="https://embed.spotify.com/?uri=<%= playlist.url %>" height="500" frameborder="0" allowtransparency="true"></iframe>
+        <div class="index-title-user-box">
+          <span class="index-playlist-title"><%= link_to playlist.title, playlist_path(playlist) %></span><br>
+          <span class="index-playlist-user"><%= link_to playlist.user.email, user_path(playlist.user) %></span>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="row" id="index-buffer-row">
 
-<%= paginate @playlists %>
+    </div>
+  </div>
+  <%= paginate @playlists %>
+</div>
+
+<div class="row">
+  <hr/>
+  <div class="large-6 columns">
+    <h4>Be respectful</h4>
+    <p id="index-mission-statement">Your musical taste may differ from many other people. Just because you aren't a belieber like Vikram, doesn't mean you should downvote a playlist.</p>
+  </div>
+  <div class="large-6 columns">
+    <h4>Spotlist creators:</h4>
+    <div class="spotlist-creators">
+    <li>Steven Watkins</li>
+    <li>William Mahoney</li>
+    <li>Diego De Souza</li>
+    <li>Jamie Francese</li>
+  </div>
+  </div>
+</div>
+
+<div class="row">
+  <hr>
+  <div class="large-12 columns">
+    <h4>Check out our Github profiles:</h4>
+    <a href="https://github.com/billyacademy" target="_blank" /><%= image_tag 'billy-round.png' %></a>
+    <a href="https://github.com/diegodesouza" target="_blank" /><%= image_tag 'diego-round.png' %></a>
+    <a href="https://github.com/jamienf" target="_blank" /><%= image_tag 'jamie-round.png' %></a>
+    <a href="https://github.com/swatkns785" target="_blank" /><%= image_tag 'stevie-round.png' %></a>
+  </div>
+</div>
+
+
+<footer class="row">
+  <div class="large-12 columns">
+    <div class="row">
+      <p id="bottom-copywright">© Copyright Billy, Diego, Jamie, and Stevie Tables</p>
+    </div>
+  </div>
+</footer>

@@ -3,47 +3,74 @@
 <head>
   <title>Spotlist2</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'custom', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">Spotlist2</a></h1>
-      </li>
-    </ul>
+  <div class="row">
+    <div class="large-12 columns">
 
-    <section class="top-bar-section">
-      <ul class="right">
+      <!--NAV-->
 
-        <%= form_tag playlists_path, method: :get do %>
-        <%= label_tag :query, "Search" %>
-        <%= text_field_tag :query %>
-        <%= submit_tag "Search" %>
-        <% end %>
+      <nav class="top-bar" data-topbar>
+        <ul class="title-area">
 
-        <% if signed_in? %>
-          <% if current_user.admin? %>
+          <li class="name">
+            <h1>
+              <a href="#">
+                Spotlist
+              </a>
+            </h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+          <ul class="right">
+            <li class="has-form">
+              <div class="row collapse">
+                <div class="large-8 small-9 columns">
+            <%= form_tag playlists_path, method: :get do %>
+            <%= text_field_tag :query %>
+                </div>
+                <div class="large-4 small-3 columns">
+            <%= submit_tag "Search", class: "alert button expand" %>
+            <% end %>
+          </div>
+
+          </div>
+
+            </li>
+
+            <% if signed_in? %>
+            <% if current_user.admin? %>
             <li><%= link_to 'Admin', admin_users_path %></li>
-          <% end %>
-          <li><%= link_to 'Add a playlist', new_playlist_path %></li>
-          <li><%= link_to 'Profile', user_path(current_user) %></li>
-          <li><%= link_to 'Account Management', edit_user_registration_path %></li>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <% elsif current_user == nil %>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <% end %>
-      </ul>
-    </section>
-  </nav>
+            <% end %>
+            <li><%= link_to 'Add a playlist', new_playlist_path %></li>
+            <li><%= link_to 'Profile', user_path(current_user) %></li>
+            <li><%= link_to 'Account Management', edit_user_registration_path %></li>
+            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            <% elsif current_user == nil %>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li><%= link_to 'Sign In', new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </section>
+      </nav>
+
+      <!--END-NAV-->
+
+    </div>
+  </div>
+
 
   <% flash.each do |key, value| %>
-    <div class="flash flash-<%= key %>">
+    <div data-alert class="flash flash-<%= key %> alert-box">
       <%= value %>
     </div>
   <% end %>
+
 
   <%= yield %>
 
