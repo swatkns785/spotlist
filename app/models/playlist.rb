@@ -1,4 +1,5 @@
 class Playlist < ActiveRecord::Base
+  VALID_SPOTIFY_URI = /spotify:user:[A-Z0-9._%+-]+:playlist:[A-Z0-9._%+-]+/i
   paginates_per 3
   belongs_to :user
   has_many :reviews, dependent: :destroy
@@ -7,8 +8,11 @@ class Playlist < ActiveRecord::Base
     presence: true
 
   validates :url,
-    presence: true,
-    format: { with: URI::regexp("spotify:user"), message: "Please use the valid Spotify URI address." }
+    presence: true
+
+
+  validates :url,
+    format: { with: VALID_SPOTIFY_URI, message: "Please use the valid Spotify URI address."}
 
   validates :description,
     presence: true,
