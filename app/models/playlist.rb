@@ -1,5 +1,5 @@
 class Playlist < ActiveRecord::Base
-  paginates_per 3
+  paginates_per 8
   belongs_to :user
   has_many :reviews, dependent: :destroy
 
